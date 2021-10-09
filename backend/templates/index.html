@@ -113,6 +113,20 @@
             box-shadow: 0px 0px 20px #e4e9f0;
             overflow-y: scroll;
         }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            text-align: center;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
         #style-4::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -164,6 +178,37 @@
             <div class="covidresult" id="style-4"><div class="force-overflow"></div>
             <h4 style="margin-left: 150px; margin-top: 10px;">Covid Results</h4>
             <p style="margin-top: 250px; margin-left: 150px;">No Results</p>
+            </div>
+            <div class="covidresult" id="style-4"><div class="force-overflow"></div>
+            <h4 style="margin-left: 150px; margin-top: 10px;">Tumor Results</h4>
+            <p style="margin-top: 250px; margin-left: 150px;">No Results</p>
+            </div>
+        </div>
+        <div class="resultwrapper">
+            <div class="covidresult" id="style-4"><div class="force-overflow"></div>
+            <h4 style="margin-left: 150px; margin-top: 10px;">Blood Requests</h4>
+            {% if blood %}
+            {% for i in blood %}
+            <table>
+                <tr>
+                    <th>Blood Group</td>
+                    <th>Units</td>
+                    <th>Blood Bank</td>
+                    <th>Status</td>
+                </tr>
+                {% for i in blood %}
+                <tr>
+                    <td>{{ i.hid.group }}</td>
+                    <td>{{ i.unit }}</td>
+                    <td>{{ i.hid.name }}</td>
+                    <td><div class="contact" onclick="viewprescription(1)"><p style="background-color: rgb(100, 100, 214);">Pending</p></div></td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endfor %}
+            {% else %}
+            <p style="margin-top: 250px; margin-left: 150px;">No Results</p>
+            {% endif %}
             </div>
             <div class="covidresult" id="style-4"><div class="force-overflow"></div>
             <h4 style="margin-left: 150px; margin-top: 10px;">Tumor Results</h4>

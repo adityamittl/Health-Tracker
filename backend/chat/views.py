@@ -67,14 +67,15 @@ def getMessages(request, room):
     try:
         temp = list(temp.values())
     except:
-        temp = []
-    messages.delete()
-    print(temp)
+        return
     try:
-        if(temp['user'==request.user.username]):
+        if(str(temp[0]['user'])==str(request.user.email)):
+            print("---------------------------------")
             temp = []
+        else:
+            messages.delete()
     except:
-        pass
+        messages.delete()
     return JsonResponse({"messages": temp})
 
 def tempchat(request):

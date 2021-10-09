@@ -198,6 +198,7 @@
         .message{
             word-wrap: break-word;
             width: 300px;
+            background-color: transparent !important;
         }
         #message{
             margin-top: 10px;
@@ -276,7 +277,7 @@
                     id="room_id"
                     value="{{ room_details.id }}"
                 />
-                <input type="text" name="message" id="message" placeholder="Type Here" />
+                <input type="text" name="message" id="message" placeholder="Type Here" autocomplete="off" />
                 <input type="submit" value="Send" class="sendmsg" />
                 </form>
           </div>
@@ -297,7 +298,7 @@
                 console.log(response);
                 for (var key in response.messages) {
                   var temp =
-                    "<div class='container_darker'><div class=\"userwrap\"><img class=\"chatavatar\" src=\"https://avatars.abstractapi.com/v1/?api_key=6da62740910249f583b6dd21faf16556&name="+response.messages[key].user+"\"><h8>" +
+                    "<div class='container_darker'><div class=\"userwrap\"><img class=\"chatavatar\" src=\"https://avatars.abstractapi.com/v1/?api_key=6da62740910249f583b6dd21faf16556&name="+response.messages[key].user+"\"><h8 style=\"font-size: 13px;background-color: transparent !important;\">" +
                     response.messages[key].user.split('@')[0] +
                     "</h8><p style=\"font-size: 10px;\">"+response.messages[key].date+"</p></div><p class=\"message\">" +
                     response.messages[key].value +

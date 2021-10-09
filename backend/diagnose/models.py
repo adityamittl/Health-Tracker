@@ -17,6 +17,7 @@ class donations(models.Model):
     prescription = models.ImageField()
 
 class request_blood(models.Model):
+    hid = models.ForeignKey(blood_bank,on_delete=models.CASCADE,blank=True,null=True)
     requester = models.ForeignKey(User,on_delete=models.CASCADE)
     unit = models.IntegerField()
     prescription = models.ImageField()

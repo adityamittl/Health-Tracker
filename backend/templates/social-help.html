@@ -290,12 +290,14 @@
                         <th>Quantity</td>
                         <th>Contact</td>
                     </tr>
+                    {% for i in blood %}
                     <tr>
-                        <td> O+</td>
-                        <td>Govt. Hospital</td>
-                        <td>10 Units</td>
+                        <td> {{ i.group }}</td>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.quantity }} Units</td>
                         <td><div class="contact" onclick="contact(1)"><p>Get in touch</p></div> </td>
                     </tr>
+                    {% endfor %}
                 </table>
             </div>
         </div>
@@ -319,11 +321,31 @@
                 </table>
             </div>
         </div>
+        <div class="post">
+            <h4 class="title">Request Blood</h4>
+            <div class="availability">
+                <table>
+                    <tr>
+                        <th>Blood Group</td>
+                        <th>Units</td>
+                        <th>View Prescription</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>ABC</td>
+                        <td>Cancer</td>
+                        <td><div class="contact" onclick="viewprescription(1)"><p style="background-color: rgb(100, 100, 214);">view</p></div></td>
+                        <td>20000</td>
+                        <td><div class="contact" onclick="contact(1)"><p>Donate</p></div> </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
         <div class="footer"></div>
     </div>
     <div class="overlay" id="overlay">
         <div class="close" title="Close" onclick='document.getElementById("overlay").style.display = "none";'></div>
-        <form action="" method="post" style="margin-top: 30px; display: flex; align-items: center; justify-content: space-around; flex-direction: column;">
+        <form action="" method="post" enctype="multipart/form-data" style="margin-top: 30px; display: flex; align-items: center; justify-content: space-around; flex-direction: column;">
             {% csrf_token %}
             <div class="cont"><img src="" alt="Prescription" id="output"></div>
             <input type="text" style="display: none;" name="Hid" id="hid" value="">
@@ -342,6 +364,9 @@
         <div class="imgcont">
             <img src="" alt="Prescription">
         </div>
+        <div class="close" onclick="document.getElementById('overlay2').style.display = 'none'"></div>
+    </div>
+    <div class="overlay" id="overlay3">
         <div class="close" onclick="document.getElementById('overlay2').style.display = 'none'"></div>
     </div>
     <script>
