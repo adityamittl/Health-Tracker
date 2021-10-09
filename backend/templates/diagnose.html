@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/8744931b12.js" crossorigin="anonymous"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
@@ -40,7 +41,7 @@
             border-radius: 50%;
             margin-bottom: 10px;
             box-shadow: 0px 0px 10px #e4e9f0;
-            background: url('https://avatars.abstractapi.com/v1/?api_key=6da62740910249f583b6dd21faf16556&name=aditya');
+            background: url('https://avatars.abstractapi.com/v1/?api_key=6da62740910249f583b6dd21faf16556&name={{ user.first_name }}');
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -161,16 +162,16 @@
     <div class="leftpannel">
         <div class="proilecont">
             <div class="profile_picture"></div>
-            <h5 style="font-family: Roboto; font-size: 20px;" class="profilename">Aditya</h5>
-            <h8 style="font-family: Roboto; font-size: 16px;" class="profilename">(Tesemail@gmail.com)</h8>
+            <h5 style="font-family: Roboto; font-size: 20px;" class="profilename" id="profilename">{{ user.first_name }}</h5>
+            <h8 style="font-family: Roboto; font-size: 16px;" class="profilename">({{ user.email }})</h8>
         </div>
         <div class="navs">
             <ul class="nav">
-                <li><i class="fas fa-heart" style="color: red;"></i><p style="margin-right: 5px;"></p> Health Monitor</li>
-                <li class="active" onclick="location.href='/diagnose';"><i class="fas fa-diagnoses"></i><p style="margin-right: 5px;"></p>Diagnose</li>
-                <li><i class="fas fa-share-alt" style="color: blue;"></i><p style="margin-right: 5px;"></p>Social Help</li>
-                <li><i class="fas fa-blog" style="color: blue;"></i><p style="margin-right: 5px;"></p>Health Blog</li>
-                <li><i class="far fa-comments" style="color: blue;"></i><p style="margin-right: 5px;"></p>Chat Rooms</li>
+                <li onclick="location.href='/';"><i class="fas fa-heart" style="color: red;"></i><p style="margin-right: 5px;"></p> Health Monitor</li>
+                <li class="active" onclick="location.href='/diagnose';"><i class="fas fa-diagnoses" style="color: white;"></i><p style="margin-right: 5px;"></p>Diagnose</li>
+                <li onclick="location.href='/social';"><i class="fas fa-share-alt" style="color: blue;"></i><p style="margin-right: 5px;"></p>Social Help</li>
+                <li onclick="location.href='/blog';"><i class="fas fa-blog" style="color: blue;"></i><p style="margin-right: 5px;"></p>Health Blog</li>
+                <li onclick="location.href='/chat';"><i class="far fa-comments" style="color: blue;"></i><p style="margin-right: 5px;"></p>Chat Rooms</li>
             </ul>
         </div>
     </div>
@@ -181,6 +182,8 @@
         </div>
         <div class="footer"></div>
     </div>
-
+    <script>
+        document.getElementById('profilename').innerHTML = '{{ user.first_name }}'.split('@')[0]
+    </script>
 </body>
 </html>

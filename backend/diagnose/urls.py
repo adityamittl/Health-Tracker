@@ -4,5 +4,4 @@ urlpatterns = [
     path('',index),
     path('diagnose',diagnose),
     path('social',social_help),
-    path('blog',blog)
 ]
