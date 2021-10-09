@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/8744931b12.js" crossorigin="anonymous"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+        body{
+            display: flex;
+
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Roboto;
+        }
+        .leftpannel{
+            height: 100vh;
+            width: 20vw;
+            background-color: #ffffff;
+            border-right: 1px solid #e4e9f0;
+            position: fixed;
+        }
+        .proilecont{
+            height: 30vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .profile_picture{
+            height: 70px;
+            width: 70px;
+            background-color: white;
+            border: 0.1px solid rgba(0, 0, 0, 0.315);
+            border-radius: 50%;
+            margin-bottom: 10px;
+            box-shadow: 0px 0px 10px #e4e9f0;
+            background: url('https://avatars.abstractapi.com/v1/?api_key=6da62740910249f583b6dd21faf16556&name=aditya');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .profilename{
+            background: -webkit-linear-gradient(45deg,rgb(0, 0, 0), rgb(153, 21, 21));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .container{
+            margin-left: 15vw;
+            height: 100vh;
+            width: 80%;
+        }
+        .navs{
+            height: 70vh;
+            width: 100%;
+            padding-top: 40px;
+        }
+        .nav{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+        }
+        .nav > li{
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .active{
+            background-color: #1a55e3;
+            color: white;
+            width: 97%;
+        }
+        .nav > li:hover{
+            box-shadow: 0px 0px 20px #e4e9f0;
+            width: 100%;
+        }
+        .chart{
+            width: 70%;
+            height: 50vh;
+            box-shadow: 0px 0px 20px #e4e9f0;
+            margin-left: 200px;
+            margin-top: 40px;
+        }
+        .logout{
+            position: absolute;
+            float: right;
+            right: 30px;
+            top: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px #e4e9f0;
+            height: 30px;
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .covidresult{
+            height: 500px;
+            width: 400px;
+            margin-left: 140px;
+            margin-top: 80px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 20px #e4e9f0;
+            overflow-y: scroll;
+        }
+        #style-4::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+#style-4::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-4::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+	border: 2px solid #555555;
+}
+    .footer{
+        height: 100px;
+        width: 100%;
+    }
+    .resultwrapper{
+        display: flex;
+        justify-content: space-between;
+    }
+    </style>
+</head>
+<body>
+    <a href=""><div class="logout"><i class="fas fa-sign-out-alt"></i></div></a>
+    <div class="leftpannel">
+        <div class="proilecont">
+            <div class="profile_picture"></div>
+            <h5 style="font-family: Roboto; font-size: 20px;" class="profilename">Aditya</h5>
+            <h8 style="font-family: Roboto; font-size: 16px;" class="profilename">(Tesemail@gmail.com)</h8>
+        </div>
+        <div class="navs">
+            <ul class="nav">
+                <li class="active"><i class="fas fa-heart"></i><p style="margin-right: 5px;"></p> Health Monitor</li>
+                <li onclick="location.href='/diagnose';"><i class="fas fa-diagnoses"></i><p style="margin-right: 5px;"></p>Diagnose</li>
+                <li><i class="fas fa-share-alt"></i><p style="margin-right: 5px;"></p>Social Help</li>
+                <li><i class="fas fa-blog"></i><p style="margin-right: 5px;"></p>Health Blog</li>
+                <li><i class="far fa-comments"></i><p style="margin-right: 5px;"></p>Chat Rooms</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="chart" id="chartContainer"></div>
+        <div class="resultwrapper">
+            <div class="covidresult" id="style-4"><div class="force-overflow"></div>
+            <h4 style="margin-left: 150px; margin-top: 10px;">Covid Results</h4>
+            <p style="margin-top: 250px; margin-left: 150px;">No Results</p>
+            </div>
+            <div class="covidresult" id="style-4"><div class="force-overflow"></div>
+            <h4 style="margin-left: 150px; margin-top: 10px;">Tumor Results</h4>
+            <p style="margin-top: 250px; margin-left: 150px;">No Results</p>
+            </div>
+        </div>
+        <div class="footer"></div>
+    </div>
+
+    <script>
+        window.onload = function() {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: "Health Index"
+	},
+	axisX: {
+		title: "Time"
+	},
+	axisY: {
+		title: "Percentage",
+		suffix: "%",
+		includeZero: true,
+        gridThickness: 0
+	},
+	data: [{
+		type: "line",
+		name: "CPU Utilization",
+		connectNullData: true,
+		//nullDataLineDashType: "solid",
+		xValueType: "dateTime",
+		xValueFormatString: "DD MMM hh:mm TT",
+		yValueFormatString: "#,##0.##\"%\"",
+		dataPoints: [
+			{ x: 1501048673000, y: 35.939 },
+			{ x: 1501052273000, y: 40.896 },
+			{ x: 1501055873000, y: 56.625 },
+			{ x: 1501059473000, y: 26.003 },
+			{ x: 1501063073000, y: 20.376 },
+			{ x: 1501066673000, y: 19.774 },
+			{ x: 1501070273000, y: 23.508 },
+			{ x: 1501073873000, y: 18.577 },
+			{ x: 1501077473000, y: 15.918 },
+			{ x: 1501081073000, y: null }, // Null Data
+			{ x: 1501084673000, y: 10.314 },
+			{ x: 1501088273000, y: 10.574 },
+			{ x: 1501091873000, y: 14.422 },
+			{ x: 1501095473000, y: 18.576 },
+			{ x: 1501099073000, y: 22.342 },
+			{ x: 1501102673000, y: 22.836 },
+			{ x: 1501106273000, y: 23.220 },
+			{ x: 1501109873000, y: 23.594 },
+			{ x: 1501113473000, y: 24.596 },
+			{ x: 1501117073000, y: 31.947 },
+			{ x: 1501120673000, y: 31.142 }
+		]
+	}]
+});
+chart.render();
+
+}
+
+</script>
+</body>
+</html>
