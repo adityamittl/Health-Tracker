@@ -69,7 +69,7 @@ def social_help(request):
             date = request.POST.get('date')
             data = blood_donate()
             data.donor = request.user
-            data.location = blood_bank.objects.get(name = hname)
+            data.location = blood_bank.objects.filter(name = hname)[0]
             data.bgroup = bgroup
             data.date = date
             data.save()

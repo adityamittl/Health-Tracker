@@ -299,7 +299,7 @@
                         <td> {{ i.group }}</td>
                         <td>{{ i.name }}</td>
                         <td>{{ i.quantity }} Units</td>
-                        <td><div class="contact" onclick="contact({{ i.id }})"><p>Get in touch</p></div> </td>
+                        <td><div class="contact" onclick="contact('{{ i.id }}')"><p>Get in touch</p></div> </td>
                     </tr>
                     {% endfor %}
                 </table>

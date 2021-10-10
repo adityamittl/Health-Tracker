@@ -102,6 +102,23 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+        }
+        .logout .logout-text{
+            display: none;
+        }
+        .logout:hover .logout-text{
+            display: block;
+        }
+        .logout:hover{
+            justify-content: space-around;
+            animation: logout-expand;
+            animation-duration: 0.4s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes logout-expand {
+            from{width: 30px;}
+            to{width: 100px;}
         }
         .covidresult{
             height: 500px;
@@ -154,7 +171,7 @@
     </style>
 </head>
 <body>
-    <a href=""><div class="logout"><i class="fas fa-sign-out-alt"></i></div></a>
+    <a href="/logout"><div class="logout"><p class="logout-text">Logout</p><i class="fas fa-sign-out-alt"></i></div></a>
     <div class="leftpannel">
         <div class="proilecont">
             <div class="profile_picture"></div>
