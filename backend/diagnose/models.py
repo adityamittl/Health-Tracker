@@ -14,7 +14,7 @@ class Score(models.Model):
 
     #save method
     def save(self, *args, **kwargs):
-        #if test_result is less than 80 execute this
+
         if self.test_result < 80:
             #twilio code
             account_sid = 'SK7408a1a9c65e8f94ac82d0f0eef4075e'
@@ -22,7 +22,7 @@ class Score(models.Model):
             client = Client(account_sid, auth_token)
 
             message = client.messages.create(
-                                        body=f'Hi, your test result is {self.test_result}. Great job',
+                                        body=f'Hi, your test result is {self.test_result}. You have chances of getting disease',
                                         from_='+17813325712',
                                         to='+91 99775 72889' 
                                     )
