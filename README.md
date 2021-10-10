@@ -30,6 +30,8 @@ Our inspiration was to create an all-in-one health platform where people can ask
 ## Twilio
 
 - People can request blood from their nearest hospital and they will get a message on their registered email-id once blood is available which is implemented using Twilio.
+- Hospitals will algo get a email if someone requests blood from them
+- Users will also get a email if someone wants to donate them blood or money.
 
 ## 🧠 Challenges we ran into
 
@@ -37,10 +39,13 @@ Our inspiration was to create an all-in-one health platform where people can ask
 
 ## 🏅 Accomplishments that we're proud of
 
+- Achieving 80%+ accuracy on all three ML models (specifically 99% on Thyroid) is a feat we are definitely proud of.
+- Completing all these feautes in just two days is another.
+
 ## 📖 What we learned
 
 We learned how to integrate ML models directly without creating an API with Django and collaboration.
 
 ## 🚀 What's next for Health Tracker
 
-Improving the accuracy of the model.
+Improving the accuracy of the models and adding more self diagnosis models.
