@@ -429,7 +429,7 @@
                 <select name="hospital_name" id="hospital_name" style="margin-left: 30px;" onchange="selecthspital(this.value)">
                     <option value="Select Hosptial">Select hospital</option>
                     {% for i in blood %}
-                    <option value="{{ i.name }}">{{ i.name }}</option>
+                    {% ifchanged %}<option value="{{ i.name }}">{{ i.name }}</option>{% endifchanged %}
                     {% endfor %}
                 </select>
                 <input type="text" name="hsname" id="hsname" style="display: none;">
