@@ -19,6 +19,10 @@ Our inspiration was to create an all in one health platfrom where people can ask
 
 ## 🔑 Auth0
 
+- We have used Auth0 for secure user authentication
+
+## Twilio
+
 - People can request for blood from thier nearest hospital and they will get a message on thier registered email-id once blood is available.
 
 ## 🧠 Challenges we ran into
