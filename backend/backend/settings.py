@@ -80,8 +80,16 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django_cockroachdb',
+        'NAME': 'second-elk-1010.defaultdb',
+        'USER': 'aditya',
+        'PASSWORD': 'Hacker@123456',
+        'HOST': 'free-tier6.gcp-asia-southeast1.cockroachlabs.cloud',
+        'PORT': '26257',
+        'OPTIONS': {
+            'sslmode': 'verify-full',
+            'sslrootcert': BASE_DIR/'root.crt',
+        },
     }
 }
 

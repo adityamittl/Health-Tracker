@@ -10,4 +10,4 @@ urlpatterns = [
     path('chat/',include('chat.urls')),
     path('', include('auth0login.urls')),
     path('blog',blog,name='blog')
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

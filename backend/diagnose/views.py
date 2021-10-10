@@ -5,19 +5,28 @@ from .models import *
 from django.core.files.storage import FileSystemStorage
 from .Disease_Diagnosis.util import heart_disease, diabetes,thyroid
 
+@login_required
 def index(request):
     blood = request_blood.objects.filter(requester=request.user)
+    donation = donations.objects.filter(name = request.user)
+    brequest = request_blood_public.objects.filter(requester = request.user)
+    apntmnt = blood_donate.objects.filter(donor = request.user)
     context = {
-        'blood':blood
+        'blood':blood,
+        'donation': donation,
+        'brequest':brequest,
+        'apts' : apntmnt
     }
     return render(request,'index.html',context=context)
+@login_required
 
 def diagnose(request):
     return render(request, 'diagnose.html')
-
+@login_required
 def social_help(request):
     if request.method=='POST':
-        if request.FILES['myfile']:
+        fid = request.POST.get('formid')
+        if(fid=='1' or fid ==1):
             data = request_blood()
             myfile = request.FILES['myfile']
             fs = FileSystemStorage(location='media/blood_request')
@@ -30,12 +39,53 @@ def social_help(request):
             data.save()
             print(data)
             return redirect('dashboard')
+        if(fid=='2' or fid ==2):
+            data = donations()
+            myfile = request.FILES['myfile2']
+            fs = FileSystemStorage(location='media/donations')
+            filename = fs.save(myfile.name, myfile)
+            data.prescription = filename
+            data.name = request.user
+            data.ammount = request.POST.get('money') 
+            data.disease = request.POST.get('disease') 
+            data.save()
+            print(data)
+            return redirect('dashboard')
+        if(fid=='3' or fid ==3):
+            data = request_blood_public()
+            myfile = request.FILES['myfile3']
+            fs = FileSystemStorage(location='media/req_blood')
+            filename = fs.save(myfile.name, myfile)
+            data.pres = filename
+            data.requester = request.user
+            data.units = request.POST.get('units') 
+            data.group = request.POST.get('bgroup') 
+            data.save()
+            print(data)
+            return redirect('dashboard')
+        if(fid=='4' or fid==4):
+            hname = request.POST.get('hsname')
+            bgroup = request.POST.get('bdgroup')
+            date = request.POST.get('date')
+            data = blood_donate()
+            data.donor = request.user
+            data.location = blood_bank.objects.get(name = hname)
+            data.bgroup = bgroup
+            data.date = date
+            data.save()
+            return redirect('dashboard')
+
     blood = blood_bank.objects.all()
+    donation = donations.objects.all()
+    brequest = request_blood_public.objects.all()
     context = {
-        'blood':blood
+        'blood':blood,
+        'donation': donation,
+        'brequest':brequest
+
     }
     return render(request, 'social-help.html',context=context)
-
+@login_required
 def blog(request):
     return render(request,'blog.html')
 
@@ -53,7 +103,7 @@ Age - age in years
 
 sample input = [1, 89, 66, 23, 94, 28.1, 0.167, 21]
 '''
-
+@login_required
 def diabetesr(request):
     if request.method=='POST':
         pragnancies = request.POST.get('prag')
@@ -98,7 +148,7 @@ FTI - Free Thyroxine Index
 
 sample input = [24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.00025,0.03,0.143,0.133,0.108]
 '''
-
+@login_required
 def thyroism(request):
     if request.method=='POST':
         Age = int(request.POST.get('age'))
@@ -148,7 +198,7 @@ thal - (1 = normal; 2 = fixed defect; 3 = reversable defect)
 
 sample input = [63, 1, 3, 145, 233, 1, 0, 150, 0, 2.3, 0, 0, 1]
 '''
-
+@login_required
 def heartdis(request):
     if request.method=='POST':
         Age = request.POST.get('Age')
