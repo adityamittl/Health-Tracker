@@ -1,7 +1,7 @@
 # Health Tracker
 
 ## 💡 Inspiration
-Our inspiration was to create an all-in-one health platform where people can ask for the blood of a particular blood group when needed, can self-diagnose some common diseases, read health blogs and also create/join chat rooms and interact with other random people online aiming at improving their mental health.
+Our inspiration was to create an all-in-one health platform where people can ask for the blood of a particular blood group when needed, can self-diagnose some common diseases, read health blogs and also create/join chat rooms and interact with other random people online aiming at improving their mental health. 
 
 ## 💻 What it does
 - Users can check if they are infected with any kind of heart disease, diabetes, thyroid, or not. 
